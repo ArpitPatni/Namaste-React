@@ -1,31 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+export const IMG_CDN_URL =
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-const Title = () => {
-  return (
-    <a className="logo" href="/">
-      Patni's Kitchen
-    </a>
-  );
-};
-
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>HOME</li>
-          <li>ABOUT</li>
-          <li>CONTACT</li>
-          <li>CART</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const resList = [
+export const resList = [
   {
     type: "restaurant",
     data: {
@@ -1909,57 +1885,3 @@ const resList = [
     subtype: "basic",
   },
 ];
-
-const RestaurantCard = ({
-  cloudinaryImageId,
-  name,
-  avgRating,
-  cuisines,
-  costForTwo,
-  deliveryTime,
-}) => {
-  return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines?.join(", ")}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>₹{costForTwo / 100} FOR TWO</h4>
-      <h4>{deliveryTime} minutes</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="restro-list">
-      {resList.map((restro) => {
-        return <RestaurantCard key={restro.data.id} {...restro.data} />;
-      })}
-    </div>
-  );
-};
-const Footer = () => {
-  return <h4>Footer</h4>;
-};
-
-const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Body />
-      <Footer />
-    </>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
