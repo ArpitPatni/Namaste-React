@@ -9,7 +9,7 @@ const useRestro = (id) => {
 
   async function getRestroMenu() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.037371586692027&lng=77.61706240475178&restaurantId=" +
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.037371586692027&lng=77.61706240475178&restaurantId=" +
         id +
         "&submitAction=ENTER"
     );
