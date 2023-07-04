@@ -12,7 +12,7 @@ function Cart() {
   return (
     <div>
       <div className="flex items-center">
-        <div>Cart Items: {cartItems.length}</div>
+        <div>Total items in your cart: {cartItems.length}</div>
         <button
           className="p-2 m-2 bg-slate-500 rounded-md"
           onClick={() => handleClearCart()}
