@@ -39,8 +39,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <span className="font-bold">{user.name}</span>
-      <span className="font-bold">{user.email}</span>
       {isLoggedIn ? (
         <button
           className="hover:text-white mr-5"

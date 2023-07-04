@@ -50,24 +50,12 @@ const Body = () => {
             }
           }}
         />
-
-        <input
-          className="border-slate-900 outline "
-          type="text"
-          onChange={(e) =>
-            setUser({
-              name: e.target.value,
-              email: "newemail@gmail.com",
-            })
-          }
-          value={user.name}
-        />
         <button
           onClick={() => {
             const filteredData = filterData(searchText, allRestro);
             setFilteredRestros(filteredData);
           }}
-          className="search-btn"
+          className="bg-slate-400 rounded-lg p-1"
         >
           Search
         </button>

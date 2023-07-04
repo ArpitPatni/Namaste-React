@@ -22,8 +22,6 @@ const RestaurantCard = ({
       <h4>{avgRating} stars</h4>
       <h4>₹{costForTwo / 100} FOR TWO</h4>
       <h4>{deliveryTime} minutes</h4>
-      <h4 className="font-bold">{user.name}</h4>
-      <h4 className="font-bold">{user.email}</h4>
     </div>
   );
 };
