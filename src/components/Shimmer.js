@@ -1,9 +1,10 @@
 import React from "react";
-import { ShimmerPostList } from "react-shimmer-effects";
+// import { ShimmerPostList } from "react-shimmer-effects";
 function Shimmer() {
   return (
     <>
-      <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />;
+      Shimmer...
+      {/* <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />; */}
     </>
   );
 }

@@ -4,9 +4,8 @@ const Error = () => {
   console.log(error);
   return (
     <>
-      <div>{error.error.message}</div>
-      <div>{error.status}</div>
-      <div>{error.statusText}</div>
+      <h1>Something went wrong</h1>
+      <div>{error?.statusText}</div>
     </>
   );
 };

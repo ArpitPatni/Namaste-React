@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { SWIGGY_RESTRO_LIST } from "../constants";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [allRestro, setAllRestro] = useState([]);
   const [filteredRestros, setFilteredRestros] = useState([]);
   const [searchText, setSearchText] = useState("");
-  function filterData(searchText, restros) {
-    const data = restros.filter((restro) =>
-      restro?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-    );
-    return data;
-  }
+
+  const { user, setUser } = useContext(userContext);
+
   useEffect(() => {
     getRestros();
   }, []);
@@ -25,16 +25,21 @@ const Body = () => {
     setFilteredRestros(json?.data?.cards[2]?.data?.data?.cards);
   }
 
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h1>You are offline please check your internet connection</h1>;
+  }
+
   if (!allRestro) return null;
 
   return allRestro.length === 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5">
         <input
           type="text"
-          className="search-input"
+          className="m-5 outline"
           value={searchText}
           placeholder="Search"
           onChange={(e) => setSearchText(e.target.value)}
@@ -44,6 +49,18 @@ const Body = () => {
               setFilteredRestros(filteredData);
             }
           }}
+        />
+
+        <input
+          className="border-slate-900 outline "
+          type="text"
+          onChange={(e) =>
+            setUser({
+              name: e.target.value,
+              email: "newemail@gmail.com",
+            })
+          }
+          value={user.name}
         />
         <button
           onClick={() => {
@@ -55,7 +72,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restro-list">
+      <div className="flex justify-center gap-9 flex-wrap">
         {/* write logic here */}
         {filteredRestros.length === 0 ? (
           <h1>No Restros Found</h1>
